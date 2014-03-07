@@ -1,0 +1,161 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>baby twitter</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><button id="logout-btn">LogOut</button></li>
+                </ul>
+                <h3 class="text-muted">My Baby Twitter App</h3>
+            </div>
+
+            <!-- Button trigger modal ...Eventually put in header toggel with logout???--> 
+             <button id="start" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+               Get Talkin'
+             </button>
+            
+            <div class="left-side">
+                <div class="user-info">
+                    <!-- append user info here -->
+                </div>
+                <div class="friends">
+                    <!-- Hopefully, friends list here -->
+                </div>
+            </div>
+            <div class="message-stream">
+                <!-- append messages here -->
+            </div>
+            <div class="footer">
+                <p>♥ from J. Miller</p>
+            </div>  
+
+            <!-- Login View: model -->
+            <script type="text/template" id="login-template">
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Login Information:</h4>
+                      </div>
+                      <div class="modal-body">
+                            <div class="returning-users">
+                                <h4>Returning Users:</h4>
+                                <input type="text" placeholder="Username" id="returning-user-name"/>
+                                <input type="password" placeholder="Password" id="returning-user-pswd"/>
+                                <button type="button" id="login-btn" class="btn btn-primary">Login!</button>
+                            </div>
+                            <div class="new-users">
+                                <h4>New Users:</h4>
+                                <input type="text" placeholder="Username" id="user-name"/>
+                                <input type="password" placeholder="Password" id="user-pswd"/>
+                                <!-- Confirm pswd area? -->
+                                <input type="email" placeholder="me@example.com" id="user-email"/>
+                                <input type="text" placeholder="Link to desired avatar" id="user-avatar"/>
+                                <button type="button" id="signup-btn" class="btn btn-primary">Sign Up!</button>
+                            </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </script>
+
+            <!-- Template for user info and entering messages -->
+            <script type="text/template" id="user-template">
+                <div class="user-info">
+                    <img src="">
+                    <h2>Username here</h2>
+                </div>
+                <div class="new-message">
+                    <textarea type="text" id="message-data" placeholder="Send a message..."></textarea>
+                    <button type="sumbit" id="send-btn">Send</button>
+                </div>
+
+            </script>
+
+            <!-- Template for messages -->
+            <script type="text/template" id="list-template">
+                <div class= "message-header">
+                    <h4>Username says: </h4>
+                    <span>TimeStamp</span>
+                </div>
+                <div class= "message-body">
+                    <p><Users message to the world!<p>
+                </div>
+            </script>
+         
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+        <script src="//www.parsecdn.com/js/parse-1.2.17.min.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+
+        <!-- build:js scripts/plugins.js -->
+        <script src="bower_components/sass-bootstrap/js/affix.js"></script>
+        <script src="bower_components/sass-bootstrap/js/alert.js"></script>
+        <script src="bower_components/sass-bootstrap/js/dropdown.js"></script>
+        <script src="bower_components/sass-bootstrap/js/tooltip.js"></script>
+        <script src="bower_components/sass-bootstrap/js/modal.js"></script>
+        <script src="bower_components/sass-bootstrap/js/transition.js"></script>
+        <script src="bower_components/sass-bootstrap/js/button.js"></script>
+        <script src="bower_components/sass-bootstrap/js/popover.js"></script>
+        <script src="bower_components/sass-bootstrap/js/carousel.js"></script>
+        <script src="bower_components/sass-bootstrap/js/scrollspy.js"></script>
+        <script src="bower_components/sass-bootstrap/js/collapse.js"></script>
+        <script src="bower_components/sass-bootstrap/js/tab.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/model.js"></script>
+        <script src="scripts/views/login-view.js"></script>
+        <script src="scripts/views/main-view.js"></script>
+        <script src="scripts/views/user-view.js"></script>
+        <script src="scripts/views/list-view.js"></script>
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
