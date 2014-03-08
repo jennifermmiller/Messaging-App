@@ -1,12 +1,12 @@
-var MainView = Parse.View.extend({
+// var MainView = Parse.View.extend({
 	
-	events:{
-		'click #start': 'lauchApp',
-		//'click #logout': 'logOut'
-	},
+// 	events:{
+// 		'click #start': 'lauchApp',
+// 		//'click #logout': 'logOut'
+// 	},
 
-	lauchApp: function(){
-		new LoginView();
-	}
+// 	lauchApp: function(){
+// 		new LoginView();
+// 	}
 
-});
+// });

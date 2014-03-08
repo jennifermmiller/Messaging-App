@@ -29,20 +29,16 @@
 
         <div class="container">
             <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><button id="logout-btn">LogOut</button></li>
-                </ul>
                 <h3 class="text-muted">My Baby Twitter App</h3>
-            </div>
-
-            <!-- Button trigger modal ...Eventually put in header toggel with logout???--> 
-             <button id="start" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-               Get Talkin'
-             </button>
-            
-            <div class="left-side">
+                <div class="pull-right login-btns">
+                    <!-- Button trigger modal ...Eventually toggel with logout???--> 
+                         <!-- Button trigger modal ...Eventually put in header toggel with logout???--> 
+                    <button type="button" class="btn btn-warning btn-md" id="start-app" data-toggle="modal" data-target="#myModal">Launch</button>
+                    
+                    <button type="button" class="btn btn-warning btn-md" id="logout-btn">LogOut</button>
+                </div>
+            </div>       
+            <div class="left-side col-md-4">
                 <div class="user-info">
                     <!-- append user info here -->
                 </div>
@@ -50,12 +46,15 @@
                     <!-- Hopefully, friends list here -->
                 </div>
             </div>
-            <div class="message-stream">
+            <div class="message-stream col-md-7">
+                <div class="message-stream-header">Messages</div>
                 <!-- append messages here -->
             </div>
-            <div class="footer">
+        </div>
+
+        <!--     <div class="footer">
                 <p>♥ from J. Miller</p>
-            </div>  
+            </div>  --> 
 
             <!-- Login View: model -->
             <script type="text/template" id="login-template">
@@ -64,27 +63,42 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Login Information:</h4>
+                        <h2 class="modal-title" id="myModalLabel">Login Information:</h2>
                       </div>
                       <div class="modal-body">
                             <div class="returning-users">
-                                <h4>Returning Users:</h4>
-                                <input type="text" placeholder="Username" id="returning-user-name"/>
-                                <input type="password" placeholder="Password" id="returning-user-pswd"/>
+                                <h3>Returning Users:</h3>
+                                <div>
+                                    <label for="returning-user-name">Username:</label>
+                                    <input type="text" id="returning-user-name"/>
+                                </div>
+                                <div>
+                                    <label for="returning-user-pswd">Password:</label>
+                                    <input type="password" id="returning-user-pswd"/>
+                                </div>
                                 <button type="button" id="login-btn" class="btn btn-primary">Login!</button>
                             </div>
                             <div class="new-users">
-                                <h4>New Users:</h4>
-                                <input type="text" placeholder="Username" id="user-name"/>
-                                <input type="password" placeholder="Password" id="user-pswd"/>
+                                <h3>New Users:</h3>
+                                <div>
+                                    <label for="user-name">Username:</label>
+                                    <input type="text" placeholder="Desired username" id="user-name"/>
+                                </div>
+                                <div>
+                                    <label for="user-pswd">Password:</label>
+                                    <input type="password" placeholder="Password" id="user-pswd"/>
+                                </div>
                                 <!-- Confirm pswd area? -->
-                                <input type="email" placeholder="me@example.com" id="user-email"/>
-                                <input type="text" placeholder="Link to desired avatar" id="user-avatar"/>
+                                <div>
+                                    <label for="user-email">Email:</label>
+                                    <input type="email" placeholder="me@example.com" id="user-email"/>
+                                </div>
+                                <div>    
+                                    <label for="user-avatar">Avatar:</label>
+                                    <input type="file" style="display: inline-block" id="user-avatar"/>
+                                </div>
                                 <button type="button" id="signup-btn" class="btn btn-primary">Sign Up!</button>
                             </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       </div>
                     </div>
                   </div>
@@ -93,13 +107,13 @@
 
             <!-- Template for user info and entering messages -->
             <script type="text/template" id="user-template">
-                <div class="user-info">
-                    <img src="">
-                    <h2>Username here</h2>
+                <div class="user-stuff">
+                    <img class="avatar" src="http://files.myopera.com/FranklinBR/albums/6180651/Beautiful%20Green%20Nature%20With%20Birds%20Blue%20Jay%20Bird.jpg">
+                    <h3>Username here</h3>
                 </div>
                 <div class="new-message">
-                    <textarea type="text" id="message-data" placeholder="Send a message..."></textarea>
-                    <button type="sumbit" id="send-btn">Send</button>
+                    <textarea type="text" id="message-data" placeholder="Compose a new message..."></textarea>
+                    <button type="button" class="btn btn-warning" id="send-btn">Send</button>
                 </div>
 
             </script>
@@ -107,11 +121,11 @@
             <!-- Template for messages -->
             <script type="text/template" id="list-template">
                 <div class= "message-header">
-                    <h4>Username says: </h4>
-                    <span>TimeStamp</span>
+                    <h4>Username here </h4>
+                    <span>TimeStamp here</span>
                 </div>
                 <div class= "message-body">
-                    <p><Users message to the world!<p>
+                    <p><%=model.get('messageContents')%><p>
                 </div>
             </script>
          
@@ -120,6 +134,7 @@
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/backbone/backbone.js"></script>
+        <script src="bower_components/momentjs/moment.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
         <script src="//www.parsecdn.com/js/parse-1.2.17.min.js"></script>

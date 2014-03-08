@@ -9,19 +9,19 @@ var ListView = Parse.View.extend({
 	template: _.template($('#list-template').text()),
 
 	initialize: function(){
-		$('.js-message-stream').append(this.el);
+		$('.message-stream').append(this.el);
 
 		this.render();
 	},
 
 	render: function(){
-		var renderedTemplate = (this.template(this.model)); //pass in seperate models???
+		var renderedTemplate = (this.template({model: this.model})); //pass in seperate models???
 
 		this.$el.html(renderedTemplate);
 
 	},
 
 	expand: function(){
-		$('.message-row').toggleClass('expand');
+		this.$el.toggleClass('expand');
 	}
 });

@@ -3,7 +3,13 @@ var MessageClass = Parse.Object.extend("MessageClass");
 
 var MessagesCollection = Parse.Collection.extend({
 	model: MessageClass
+
+	// initialize: function(){
+	// 	this.on('add', function(message){
+	// 		new ListView({model: message});
+	// 	});
+	// }
 });
 
-//one day, users or current users collection?
+//if time...users or current users collection?
 

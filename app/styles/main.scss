@@ -13,6 +13,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    background-image: url(../images/shattered-island.gif);
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -32,7 +33,6 @@ body {
         margin-top: 0;
         margin-bottom: 0;
         line-height: 40px;
-        padding-bottom: 19px;
     }
 }
 
@@ -81,7 +81,17 @@ body {
 
     /* Space out the masthead */
     .header {
+        padding-bottom: 20px;
         margin-bottom: 30px;
+
+        h3,
+        .login-btns{
+            display: inline-block;
+        }
+
+        #logout-btn{
+            display: none;
+        }
     }
     
     /* Remove the bottom border on the jumbotron for visual effect */
@@ -89,3 +99,130 @@ body {
         border-bottom: 0;
     }
 }
+
+.modal-content{
+    width: 450px;
+    font-size: 14px;
+
+    .modal-body{
+        padding-left: 30px;
+
+        h3{
+            margin-top: 0;
+            margin-bottom: 20px;
+
+            &:nth-child(1){
+                margin-top: 20px;
+            }
+        }
+
+        div{
+            margin: 10px 0;
+
+            label{
+                width: 80px;
+            }
+        }    
+
+        button{
+            margin-left: 250px;
+        }
+    }
+}
+    
+.left-side,
+.message-stream{
+    display: inline-block;
+}
+
+.left-side{
+    margin: 10px 15px 0 22px;
+    background: rgb(93, 96, 109);
+    padding-bottom: 15px;
+    border-radius: 6px;
+    padding-bottom: 15px;
+    border-radius: 6px;
+    
+    .avatar{
+        width: 200px;
+        height: 200px;
+        margin-top: 15px;
+    }
+
+    h3{
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    #message-data{
+        width: 200px;
+        height: 115px;
+    }
+
+    #send-btn{
+        float: right;
+        margin-top: 10px;
+    }
+}
+
+.message-stream{
+    border-radius: 6px;
+    background: rgb(95, 124, 199);
+    margin-top: 10px;
+    box-shadow: -1px -1px 1px rgb(148, 156, 218);
+
+    .message-stream-header{
+        font-size: 24px;
+        border-bottom: 1px solid rgb(68, 72, 119);
+        padding: 10px 5px;
+    }
+
+    .message-row{
+        border-bottom: 1px solid rgb(148, 156, 218);
+        padding: 10px;
+        height: 83px;
+        overflow: hidden;
+
+        .message-header{
+            margin-bottom: 10px;
+
+            h4,
+            span{
+                display: inline-block;
+            }
+
+            h4{
+                margin: 0;
+            }
+
+            span{
+                float: right;
+            }
+        }
+
+        &.expand{
+            height: auto;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

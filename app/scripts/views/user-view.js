@@ -1,6 +1,5 @@
 //UserView - where you see user profile and can submit new tweets
 var UserView = Parse.View.extend({
-	className: 'user-action',
 
 	events:{
 		'click #send-btn': 'sendMsg'
@@ -15,7 +14,7 @@ var UserView = Parse.View.extend({
 	},
 
 	render: function(){
-		var renderedTemplate = this.template(); //pass in user info
+		var renderedTemplate = this.template();
 
 		this.$el.html(renderedTemplate);
 	},
@@ -23,12 +22,17 @@ var UserView = Parse.View.extend({
 	sendMsg: function(){
 		console.log('here?');
 
-		var message = new MessageClass;
+		var message = new MessageClass();
 
 		var msgContents = $('#message-data').val();
+		//var sentFrom = currentUser.get('username');
+		//var timeStamp = moment().format();
 
-		//save new message to message collection 
 		message.set('messageContents', msgContents);
+		//message.set('author', sentFrom);
+		//message.set('time', timeStamp);
+
+		messages.add(message);
 
 		message.save(null,{
 			successs: function(result){
@@ -38,8 +42,6 @@ var UserView = Parse.View.extend({
 				console.log(error.description);
 			}
 		});
-
-		new ListView({model: message});
 
 		$('#message-data').val('');
 	}
