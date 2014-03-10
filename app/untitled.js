@@ -21,3 +21,14 @@
                     <p><%=model.get('messageContents')%><p>
                 </div>
             </script>
+
+
+            for login view:
+                <!--<div>
+                    <label for="user-email">Email:</label>
+                    <input type="email" placeholder="me@example.com" id="user-email"/>
+                </div>
+                <div>    
+                    <label for="user-avatar">Avatar:</label>
+                    <input type="file" style="display: inline-block" id="user-avatar"/>
+                </div>-->

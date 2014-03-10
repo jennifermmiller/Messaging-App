@@ -11,6 +11,7 @@ var UserView = Parse.View.extend({
 		$('.user-info').html(this.el);
 
 		this.render();
+		console.log('render')
 	},
 
 	render: function(){
@@ -26,11 +27,11 @@ var UserView = Parse.View.extend({
 
 		var msgContents = $('#message-data').val();
 		//var sentFrom = currentUser.get('username');
-		//var timeStamp = moment().format();
+		var timeStamp = moment().format('MMM Do YY, h:mm a');
 
 		message.set('messageContents', msgContents);
 		//message.set('author', sentFrom);
-		//message.set('time', timeStamp);
+		message.set('time', timeStamp);
 
 		messages.add(message);
 

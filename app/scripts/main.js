@@ -1,3 +1,6 @@
+//figure out how to sort messages newest to oldest
+//Need to fetch on a loop or lookinto web sockets?
+
 console.log('\'Allo \'Allo!');
 
 $(document).ready(function(){
@@ -5,16 +8,49 @@ $(document).ready(function(){
 
 	window.messages = new MessagesCollection();
 
-	//$('#login-btn').attr('data-dismiss', 'modal');
-
-	$('#start-app').click(function(event){
-		event.preventDefault();
-		new UserView;
-	});
 	
+
+	// $('#start-app').click(function(){
+	// 	console.log('huh?');
+		
+	// 	new LoginView();
+	// });
+
+//Working without login:
+	$('#start-app').click(function(){
+		new UserView();
+		$('.left-side').show();
+		$('.message-stream').show();
+	});	
 	messages.fetch({
 		success: function(){
 			messages.each(function(message){
+				console.log(messages)
+				new ListView({model: message});
+			});
+		}
+	});
+
+	//Might have to fix this if I get login working
+	$('#logout-btn').click(function(){
+		Parse.User.logOut();
+		currentUser = Parse.User.current();
+
+		$('.left-side').hide();
+		$('.message-stream').empty().hide();
+
+		$(this).hide();
+		$('#start-app').show();
+	})
+
+});	
+	
+//Put this somewhere?	
+function getMessages(){	
+	messages.fetch({
+		success: function(){
+			messages.each(function(message){
+				console.log(messages)
 				new ListView({model: message});
 			});
 		},
@@ -22,10 +58,21 @@ $(document).ready(function(){
 			console.log('Just kidding! You cant fetch this stuff')
 		}
 	});
+}
 
-	//Needs to bw switched once I get login working
-
+function loadPage(){
 	
+	$('.left-side').show();
+	$('.message-stream').show();
+	
+	new UserView();
+	console.log('view')
+	getMessages();
+
+	$(this).hide();
+	$('#logout-btn').show();
+}
+
 // 	$('send-btn').click(function(){
 // 	var message = new MessageClass();
 
@@ -48,4 +95,3 @@ $(document).ready(function(){
 // 			});
 // 	});	
 	
-});

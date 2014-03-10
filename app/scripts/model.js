@@ -2,14 +2,17 @@
 var MessageClass = Parse.Object.extend("MessageClass");
 
 var MessagesCollection = Parse.Collection.extend({
-	model: MessageClass
+	model: MessageClass,
 
-	// initialize: function(){
-	// 	this.on('add', function(message){
-	// 		new ListView({model: message});
-	// 	});
-	// }
+	initialize: function(){
+		this.on('add', function(message){
+			new ListView({model: message})
+		});
+	// 	this.fetch();
+	}
 });
 
-//if time...users or current users collection?
+
+
+//if time...users collection?
 

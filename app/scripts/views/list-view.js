@@ -1,4 +1,3 @@
-//ListView - show list of tweets
 var ListView = Parse.View.extend({
 	className: 'message-row',
 
@@ -15,7 +14,7 @@ var ListView = Parse.View.extend({
 	},
 
 	render: function(){
-		var renderedTemplate = (this.template({model: this.model})); //pass in seperate models???
+		var renderedTemplate = this.template({model: this.model}); //pass in seperate models???
 
 		this.$el.html(renderedTemplate);
 

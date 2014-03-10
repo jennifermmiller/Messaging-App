@@ -47,24 +47,6 @@ body {
     margin: 30px 0;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
-    .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-    }
-}
-
-/* Supporting marketing content */
-.marketing {
-    margin: 40px 0;
-    p + h4 {
-        margin-top: 28px;
-    }
-}
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
@@ -93,19 +75,25 @@ body {
             display: none;
         }
     }
-    
-    /* Remove the bottom border on the jumbotron for visual effect */
-    .jumbotron {
-        border-bottom: 0;
-    }
 }
 
 .modal-content{
     width: 450px;
     font-size: 14px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 1px whitesmoke;
+    color: rgb(68, 72, 119);
+
+    .modal-header{
+        background: #A19EB5;
+        border-radius: 6px 6px 0 0;
+        border-bottom: 1px solid rgb(68, 72, 119);
+    }
 
     .modal-body{
         padding-left: 30px;
+        background: rgb(95, 124, 199);
+        border-radius: 0 0 6px 6px;
 
         h3{
             margin-top: 0;
@@ -133,10 +121,12 @@ body {
 .left-side,
 .message-stream{
     display: inline-block;
+    display: none;
+
 }
 
 .left-side{
-    margin: 10px 15px 0 22px;
+    margin: 10px 20px 0 20px;
     background: rgb(93, 96, 109);
     padding-bottom: 15px;
     border-radius: 6px;

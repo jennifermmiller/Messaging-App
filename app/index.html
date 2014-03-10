@@ -33,9 +33,9 @@
                 <div class="pull-right login-btns">
                     <!-- Button trigger modal ...Eventually toggel with logout???--> 
                          <!-- Button trigger modal ...Eventually put in header toggel with logout???--> 
-                    <button type="button" class="btn btn-warning btn-md" id="start-app" data-toggle="modal" data-target="#myModal">Launch</button>
+                    <button type="button" class="btn btn-warning btn-md" id="start-app" data-toggle="modal" data-target="#myModal">Login</button>
                     
-                    <button type="button" class="btn btn-warning btn-md" id="logout-btn">LogOut</button>
+                    <button type="button" class="btn btn-warning btn-md" id="logout-btn">Logout</button>
                 </div>
             </div>       
             <div class="left-side col-md-4">
@@ -50,11 +50,10 @@
                 <div class="message-stream-header">Messages</div>
                 <!-- append messages here -->
             </div>
-        </div>
-
-        <!--     <div class="footer">
+         <!--    <div class="footer">
                 <p>♥ from J. Miller</p>
-            </div>  --> 
+            </div>   -->
+        </div>
 
             <!-- Login View: model -->
             <script type="text/template" id="login-template">
@@ -76,7 +75,7 @@
                                     <label for="returning-user-pswd">Password:</label>
                                     <input type="password" id="returning-user-pswd"/>
                                 </div>
-                                <button type="button" id="login-btn" class="btn btn-primary">Login!</button>
+                                <button type="button" id="login-btn" class="btn btn-warning">Login!</button>
                             </div>
                             <div class="new-users">
                                 <h3>New Users:</h3>
@@ -88,16 +87,9 @@
                                     <label for="user-pswd">Password:</label>
                                     <input type="password" placeholder="Password" id="user-pswd"/>
                                 </div>
-                                <!-- Confirm pswd area? -->
-                                <div>
-                                    <label for="user-email">Email:</label>
-                                    <input type="email" placeholder="me@example.com" id="user-email"/>
-                                </div>
-                                <div>    
-                                    <label for="user-avatar">Avatar:</label>
-                                    <input type="file" style="display: inline-block" id="user-avatar"/>
-                                </div>
-                                <button type="button" id="signup-btn" class="btn btn-primary">Sign Up!</button>
+                                <!-- Confirm pswd area? also email and avatar area?-->
+                                
+                                <button type="button" id="signup-btn" class="btn btn-warning">Sign Up!</button>
                             </div>
                       </div>
                     </div>
@@ -122,7 +114,7 @@
             <script type="text/template" id="list-template">
                 <div class= "message-header">
                     <h4>Username here </h4>
-                    <span>TimeStamp here</span>
+                    <span><%=model.get('time')%></span>
                 </div>
                 <div class= "message-body">
                     <p><%=model.get('messageContents')%><p>
