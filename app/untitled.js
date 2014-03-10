@@ -11,24 +11,12 @@
 
             </script>
 
-            <!-- Template for messages -->
-            <script type="text/template" id="list-template">
-                <div class= "message-header">
-                    <h3><%=model.get('author')%></h3>
-                    <span><%=model.get('time')%></span>
-                </div>
-                <div class= "message-body">
-                    <p><%=model.get('messageContents')%><p>
-                </div>
-            </script>
-
-
             for login view:
-                <!--<div>
+                <div>
                     <label for="user-email">Email:</label>
                     <input type="email" placeholder="me@example.com" id="user-email"/>
                 </div>
                 <div>    
                     <label for="user-avatar">Avatar:</label>
                     <input type="file" style="display: inline-block" id="user-avatar"/>
-                </div>-->
+                </div>

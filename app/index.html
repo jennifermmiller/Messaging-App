@@ -46,9 +46,12 @@
                     <!-- Hopefully, friends list here -->
                 </div>
             </div>
-            <div class="message-stream col-md-7">
+            <div class="message-stream-plus-header col-md-7">
+                <div class="message-stream-header">Messages</div>
+                <div class="message-stream">
                 <!-- prepend messages here -->
-            </div>
+                </div>
+            </div>    
         </div>
         <div class="container">
             <div class="footer">
@@ -71,11 +74,11 @@
                                     <h3>Returning Users:</h3>
                                     <div>
                                         <label for="returning-user-name">Username:</label>
-                                        <input type="text" id="returning-user-name"/>
+                                        <input type="text" id="returning-user-name" placeholder="Username"/>
                                     </div>
                                     <div>
                                         <label for="returning-user-pswd">Password:</label>
-                                        <input type="password" id="returning-user-pswd"/>
+                                        <input type="password" id="returning-user-pswd" placeholder="Password"/>
                                     </div>
                                     <button type="button" id="login-btn" data-dismiss="modal" class="btn btn-warning">Login!</button>
                                 </div>
@@ -89,6 +92,14 @@
                                         <label for="user-pswd">Password:</label>
                                         <input type="password" placeholder="Password" id="user-pswd"/>
                                     </div>
+                                    <div>
+                                        <label for="user-email">Email:</label>
+                                        <input type="email" placeholder="me@example.com" id="user-email"/>
+                                    </div>
+                                    <div>    
+                                        <label for="user-avatar">Avatar:</label>
+                                        <input type="file" style="display: inline-block" id="user-avatar"/>
+                                    </div>
                                     <button type="button" id="signup-btn" class="btn btn-warning" data-dismiss="modal">Sign Up!</button>
                                 </div>
                             </div>
@@ -100,8 +111,8 @@
             <!-- Template for user info and entering messages -->
             <script type="text/template" id="user-template">
                 <div class="user-stuff">
-                    <img class="avatar" src="http://files.myopera.com/FranklinBR/albums/6180651/Beautiful%20Green%20Nature%20With%20Birds%20Blue%20Jay%20Bird.jpg">
-                    <h3>Username here</h3>
+                    <img class="avatar" src="<%=currentUser.get('avatar').url()%>">
+                    <h3><%=currentUser.get('username')%></h3>
                 </div>
                 <div class="new-message">
                     <textarea type="text" id="message-data" placeholder="Compose a new message..."></textarea>
@@ -112,7 +123,7 @@
             <!-- Template for messages -->
             <script type="text/template" id="list-template">
                 <div class= "message-header">
-                    <h4>Author name here </h4>
+                    <h4><%=model.get('author')%></h4>
                     <span><%=model.get('time')%></span>
                 </div>
                 <div class= "message-body">

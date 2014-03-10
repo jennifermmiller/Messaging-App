@@ -10,7 +10,7 @@ var LoginView = Parse.View.extend({
 	},
 
 	initialize: function(){
-		$('body').html(this.el);
+		$('body').append(this.el);
 
 		this.render();
 	},
@@ -24,10 +24,20 @@ var LoginView = Parse.View.extend({
 		
 		var username = $('#user-name').val();
 		var pswd = $('#user-pswd').val();
-		var email = $('#user-email').val();
-		// var userAvatar = $('#user-avatar')[0];
-			//look into storing a file if time...should only need a couple of more lines
-			//get into email verification better
+		var email = $('#user-email').val();  //get into email verification better
+		var fileUploadControl = $('#user-avatar')[0];
+			
+			if (fileUploadControl.files.length > 0) {
+			  var file = fileUploadControl.files[0];
+			  var name = 'photo.jpg';
+			 
+			  var parseFile = new Parse.File(name, file);
+			}
+
+			parseFile.save().then(function() {
+				user.set("avatar", parseFile);
+			  	console.log("Yay! Your avatar has been saved!");
+			});
 
 		user.set("username", username);
 		user.set("password", pswd);
@@ -54,14 +64,13 @@ var LoginView = Parse.View.extend({
 				currentUser = Parse.User.current();
 
 				loadPage();
-				//$('#myModal').modal('hide');
-				//clearModal();
+				clearModal();
 
 				//Change login to logout
 				$(this).hide();
 				$('#logout-btn').show();
 				
-				console.log('here?');			
+				console.log(currentUser);			
 			},
 			error: function(user, error){
 				console.log('Oopz! You could not be logged in!' + error);
@@ -71,6 +80,8 @@ var LoginView = Parse.View.extend({
 });
 
 //put these somewhere inside the view?
+
+//Input not clearing........This needs to be fixed!
 function clearModal() {
 	$('#modal input').each(function() {
 		$(this).val('');
@@ -78,21 +89,20 @@ function clearModal() {
 }
 
 function loadPage(){
-
 	$('.left-side').show();
-	$('.message-stream').show();
+	$('.message-stream-plus-header').show();
 	$('.footer').show();
-	
-	console.log('here in loadpage');
 
 	new UserView();
+	
 	messages.fetch({
 		success: function(){
+			messages.sort();
 			messages.each(function(message){
 				console.log(messages)
 				new ListView({model: message});
 			});
-		}
+		},
 	});	
 
 	$('#start-app').hide();

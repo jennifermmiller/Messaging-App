@@ -124,8 +124,7 @@ body {
 }
     
 .left-side,
-.message-stream{
-    display: inline-block;
+.message-stream-plus-header{
     display: none;
 
 }
@@ -160,11 +159,12 @@ body {
     }
 }
 
-.message-stream{
+.message-stream-plus-header{
     border-radius: 6px;
     background: rgb(95, 124, 199);
     margin-top: 10px;
     box-shadow: -1px -1px 1px rgb(148, 156, 218);
+    padding-bottom: 15px;
 
     .message-stream-header{
         font-size: 24px;
@@ -172,35 +172,37 @@ body {
         padding: 10px 5px;
     }
 
-    .message-row{
-        border-bottom: 1px solid rgb(148, 156, 218);
-        padding: 10px;
-        height: 83px;
-        overflow: hidden;
+    .message-stream{
+       
+        .message-row{
+            border-bottom: 1px solid rgb(148, 156, 218);
+            padding: 10px;
+            height: 83px;
+            overflow: hidden;
 
-        .message-header{
-            margin-bottom: 10px;
+            .message-header{
+                margin-bottom: 10px;
 
-            h4,
-            span{
-                display: inline-block;
+                h4,
+                span{
+                    display: inline-block;
+                }
+
+                h4{
+                    margin: 0;
+                }
+
+                span{
+                    float: right;
+                }
             }
 
-            h4{
-                margin: 0;
+            &.expand{
+                height: auto;
             }
-
-            span{
-                float: right;
-            }
-        }
-
-        &.expand{
-            height: auto;
         }
     }
 }
-
 
 
 

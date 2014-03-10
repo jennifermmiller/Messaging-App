@@ -10,15 +10,15 @@ $(document).ready(function(){
 
 	
 	//Thoughts: model not clearing?? 
-	// $('#start-app').click(function(){
-	// 	console.log('huh?');
-	// 	new LoginView();
-	// });
+	$('#start-app').click(function(){
+		console.log('huh?');
+		new LoginView();
+	});
 
 	//Working without login:
-	 $('#start-app').click(function(){
-	 	loadPage();
-	});
+	//  $('#start-app').click(function(){
+	//  	loadPage();
+	// });
 
 	//Might have to fix this if I get login working
 	$('#logout-btn').click(function(){
@@ -26,7 +26,7 @@ $(document).ready(function(){
 		currentUser = Parse.User.current();
 
 		$('.left-side').hide();
-		$('.message-stream').empty().hide();
+		$('.message-stream-plus-header').empty().hide();
 
 		$(this).hide();
 		$('#start-app').show();

@@ -11,7 +11,6 @@ var UserView = Parse.View.extend({
 		$('.user-info').html(this.el);
 
 		this.render();
-		console.log('render')
 	},
 
 	render: function(){
@@ -26,14 +25,14 @@ var UserView = Parse.View.extend({
 		var message = new MessageClass();
 
 		var msgContents = $('#message-data').val();
-		//var sentFrom = currentUser.get('username');
+		var sentFrom = currentUser.get('username');
 		var timeStamp = moment().format('MMM Do YY, h:mm a');
 
-		message.set('messageContents', msgContents);
-		//message.set('author', sentFrom);
+		message.set('author', sentFrom);
 		message.set('time', timeStamp);
+		message.set('messageContents', msgContents);
 
-		messages.add(message);
+		messages.add(message);//this will return collection, not model
 
 		message.save(null,{
 			successs: function(result){
