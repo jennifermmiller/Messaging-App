@@ -8,8 +8,8 @@ var ListView = Parse.View.extend({
 	template: _.template($('#list-template').text()),
 
 	initialize: function(){
-		$('.message-stream').append(this.el);
-
+		//$('.message-stream').append().html('<div class="message-stream-header">Messages</div>');
+		$('.message-stream').prepend(this.el);
 		this.render();
 	},
 
