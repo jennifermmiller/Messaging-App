@@ -1,0 +1,56 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js><!--<![endif]--><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>TwitterFeed</title><meta name=description content=""><meta name=viewport content="width=device-width"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel=stylesheet href=styles/vendor.css><link rel=stylesheet href=styles/76f912ba.main.css><script src=bower_components/modernizr/modernizr.js></script><body><!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]--><div class=container><div class=header><h3 class=text-muted>My Baby Twitter App</h3><div class="pull-right login-btns"><!-- Button trigger modal ...Eventually toggel with logout???--><!-- Button trigger modal ...Eventually put in header toggel with logout???--><button type=button class="btn btn-warning btn-md" id=start-app data-toggle=modal data-target=#myModal>Login</button> <button type=button class="btn btn-warning btn-md" id=logout-btn>Logout</button></div></div><div class="left-side col-md-4"><div class=user-info><!-- append user info here --></div><div class=friends><!-- Hopefully, friends list here --></div></div><div class="message-stream col-md-7"><!-- prepend messages here --></div></div><div class=container><div class=footer><p>♥ from J. Miller</p></div></div><!-- Login View: model --><!-- Add confirm pswd area? also email and avatar area?--><script type=text/template id=login-template><div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h2 class="modal-title" id="myModalLabel">Login Information:</h2>
+                            </div>
+                            <div class="modal-body">
+                                <div class="returning-users">
+                                    <h3>Returning Users:</h3>
+                                    <div>
+                                        <label for="returning-user-name">Username:</label>
+                                        <input type="text" id="returning-user-name"/>
+                                    </div>
+                                    <div>
+                                        <label for="returning-user-pswd">Password:</label>
+                                        <input type="password" id="returning-user-pswd"/>
+                                    </div>
+                                    <button type="button" id="login-btn" data-dismiss="modal" class="btn btn-warning">Login!</button>
+                                </div>
+                                <div class="new-users">
+                                    <h3>New Users:</h3>
+                                    <div>
+                                        <label for="user-name">Username:</label>
+                                        <input type="text" placeholder="Desired username" id="user-name"/>
+                                    </div>
+                                    <div>
+                                        <label for="user-pswd">Password:</label>
+                                        <input type="password" placeholder="Password" id="user-pswd"/>
+                                    </div>
+                                    <button type="button" id="signup-btn" class="btn btn-warning" data-dismiss="modal">Sign Up!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></script><!-- Template for user info and entering messages --><script type=text/template id=user-template><div class="user-stuff">
+                    <img class="avatar" src="http://files.myopera.com/FranklinBR/albums/6180651/Beautiful%20Green%20Nature%20With%20Birds%20Blue%20Jay%20Bird.jpg">
+                    <h3>Username here</h3>
+                </div>
+                <div class="new-message">
+                    <textarea type="text" id="message-data" placeholder="Compose a new message..."></textarea>
+                    <button type="button" class="btn btn-warning" id="send-btn">Send</button>
+                </div></script><!-- Template for messages --><script type=text/template id=list-template><div class= "message-header">
+                    <h4>Author name here </h4>
+                    <span><%=model.get('time')%></span>
+                </div>
+                <div class= "message-body">
+                    <p><%=model.get('messageContents')%><p>
+                </div></script><script src=scripts/991cd396.vendor.js></script><script src=//www.parsecdn.com/js/parse-1.2.17.min.js></script><!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');</script><script src=scripts/aaf74903.plugins.js></script><script src=scripts/fd9a959e.main.js></script>
