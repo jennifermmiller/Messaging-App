@@ -24,21 +24,20 @@ var LoginView = Parse.View.extend({
 		
 		var username = $('#user-name').val();
 		var pswd = $('#user-pswd').val();
-		//var email = $('#user-email').val();
+		var email = $('#user-email').val();
 		// var userAvatar = $('#user-avatar')[0];
 			//look into storing a file if time...should only need a couple of more lines
-
+			//get into email verification better
 
 		user.set("username", username);
 		user.set("password", pswd);
-		//user.set("email", email);
+		user.set("email", email);
 
 		user.signUp(null, {
 			success: function(user){
-				$('#signup-btn').attr('data-dismiss', 'modal')
 				currentUser = Parse.User.current();
 				clearModal();
-					loadPage();
+				loadPage();
 			},
 			error: function(user, error){
 				console.log('Oopz! We could not sign you up!' + error);
@@ -54,9 +53,9 @@ var LoginView = Parse.View.extend({
 			success: function(user){
 				currentUser = Parse.User.current();
 
-				//Clear modal data and load page
 				loadPage();
-				clearModal();
+				//$('#myModal').modal('hide');
+				//clearModal();
 
 				//Change login to logout
 				$(this).hide();
@@ -71,10 +70,31 @@ var LoginView = Parse.View.extend({
 	}
 });
 
-//put this somewhere?
+//put these somewhere inside the view?
 function clearModal() {
 	$('#modal input').each(function() {
 		$(this).val('');
 	});
 }
 
+function loadPage(){
+
+	$('.left-side').show();
+	$('.message-stream').show();
+	$('.footer').show();
+	
+	console.log('here in loadpage');
+
+	new UserView();
+	messages.fetch({
+		success: function(){
+			messages.each(function(message){
+				console.log(messages)
+				new ListView({model: message});
+			});
+		}
+	});	
+
+	$('#start-app').hide();
+	$('#logout-btn').show();
+}

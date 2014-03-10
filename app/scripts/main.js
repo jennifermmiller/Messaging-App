@@ -9,26 +9,15 @@ $(document).ready(function(){
 	window.messages = new MessagesCollection();
 
 	
-
+	//Thoughts: model not clearing?? 
 	// $('#start-app').click(function(){
 	// 	console.log('huh?');
-		
 	// 	new LoginView();
 	// });
 
-//Working without login:
-	$('#start-app').click(function(){
-		new UserView();
-		$('.left-side').show();
-		$('.message-stream').show();
-	});	
-	messages.fetch({
-		success: function(){
-			messages.each(function(message){
-				console.log(messages)
-				new ListView({model: message});
-			});
-		}
+	//Working without login:
+	 $('#start-app').click(function(){
+	 	loadPage();
 	});
 
 	//Might have to fix this if I get login working
@@ -60,38 +49,6 @@ function getMessages(){
 	});
 }
 
-function loadPage(){
-	
-	$('.left-side').show();
-	$('.message-stream').show();
-	
-	new UserView();
-	console.log('view')
-	getMessages();
 
-	$(this).hide();
-	$('#logout-btn').show();
-}
 
-// 	$('send-btn').click(function(){
-// 	var message = new MessageClass();
-
-// 		var msgContents = $('#message-data').val();
-
-// 		//save new message to message collection 
-// 		message.set('messageContents', msgContents);
-// 		messages.add(message);
-
-// 		//set message.createdAt to readable timestamp
-
-// 		message.save(null,{
-// 			successs: function(result){
-// 				console.log('Sweet! Message saved!');
-// 			},
-// 			error: function(result, error){
-// 				console.log(error.description);
-// 			}
-
-// 			});
-// 	});	
 	

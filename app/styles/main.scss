@@ -13,7 +13,6 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 body {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-image: url(../images/shattered-island.gif);
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -41,6 +40,11 @@ body {
     padding-top: 19px;
     color: #777;
     border-top: 1px solid #e5e5e5;
+    display: none;
+}
+
+.container{
+    padding-bottom: 40px;
 }
 
 .container-narrow > hr {

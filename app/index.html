@@ -50,50 +50,51 @@
                 <div class="message-stream-header">Messages</div>
                 <!-- append messages here -->
             </div>
-         <!--    <div class="footer">
-                <p>♥ from J. Miller</p>
-            </div>   -->
         </div>
+        <div class="container">
+            <div class="footer">
+                <p>♥ from J. Miller</p>
+            </div>  
+        </div>    
 
             <!-- Login View: model -->
+            <!-- Add confirm pswd area? also email and avatar area?-->
             <script type="text/template" id="login-template">
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h2 class="modal-title" id="myModalLabel">Login Information:</h2>
-                      </div>
-                      <div class="modal-body">
-                            <div class="returning-users">
-                                <h3>Returning Users:</h3>
-                                <div>
-                                    <label for="returning-user-name">Username:</label>
-                                    <input type="text" id="returning-user-name"/>
-                                </div>
-                                <div>
-                                    <label for="returning-user-pswd">Password:</label>
-                                    <input type="password" id="returning-user-pswd"/>
-                                </div>
-                                <button type="button" id="login-btn" class="btn btn-warning">Login!</button>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h2 class="modal-title" id="myModalLabel">Login Information:</h2>
                             </div>
-                            <div class="new-users">
-                                <h3>New Users:</h3>
-                                <div>
-                                    <label for="user-name">Username:</label>
-                                    <input type="text" placeholder="Desired username" id="user-name"/>
+                            <div class="modal-body">
+                                <div class="returning-users">
+                                    <h3>Returning Users:</h3>
+                                    <div>
+                                        <label for="returning-user-name">Username:</label>
+                                        <input type="text" id="returning-user-name"/>
+                                    </div>
+                                    <div>
+                                        <label for="returning-user-pswd">Password:</label>
+                                        <input type="password" id="returning-user-pswd"/>
+                                    </div>
+                                    <button type="button" id="login-btn" data-dismiss="modal" class="btn btn-warning">Login!</button>
                                 </div>
-                                <div>
-                                    <label for="user-pswd">Password:</label>
-                                    <input type="password" placeholder="Password" id="user-pswd"/>
+                                <div class="new-users">
+                                    <h3>New Users:</h3>
+                                    <div>
+                                        <label for="user-name">Username:</label>
+                                        <input type="text" placeholder="Desired username" id="user-name"/>
+                                    </div>
+                                    <div>
+                                        <label for="user-pswd">Password:</label>
+                                        <input type="password" placeholder="Password" id="user-pswd"/>
+                                    </div>
+                                    <button type="button" id="signup-btn" class="btn btn-warning" data-dismiss="modal">Sign Up!</button>
                                 </div>
-                                <!-- Confirm pswd area? also email and avatar area?-->
-                                
-                                <button type="button" id="signup-btn" class="btn btn-warning">Sign Up!</button>
                             </div>
-                      </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
             </script>
 
@@ -107,13 +108,12 @@
                     <textarea type="text" id="message-data" placeholder="Compose a new message..."></textarea>
                     <button type="button" class="btn btn-warning" id="send-btn">Send</button>
                 </div>
-
             </script>
 
             <!-- Template for messages -->
             <script type="text/template" id="list-template">
                 <div class= "message-header">
-                    <h4>Username here </h4>
+                    <h4>Author name here </h4>
                     <span><%=model.get('time')%></span>
                 </div>
                 <div class= "message-body">

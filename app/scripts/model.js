@@ -12,7 +12,5 @@ var MessagesCollection = Parse.Collection.extend({
 	}
 });
 
-
-
 //if time...users collection?
 
