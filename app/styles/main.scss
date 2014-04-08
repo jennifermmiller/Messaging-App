@@ -1,6 +1,14 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
+@import 'compass/css3';
+
+//Colors:
+$black: #202020;
+$red: #b81d18;
+$grey: #b6b6b6;
+$blue: #004687;
+$white: #f0f0f0;
 
 .browsehappy {
     margin: 0.2em 0;
@@ -9,11 +17,15 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
     padding: 0.2em 0;
 }
 
-/* Space out content a bit */
+body *{
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+}
+
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background: rgb(59, 70, 87);
+    background: url(../images/dark-brick.jpg);
+    font-size: 18px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -26,22 +38,29 @@ body {
 
 /* Custom page header */
 .header {
-    border-bottom: 1px solid #e5e5e5;
+    background: rgba(182,182,182,.8);
+    height: 71px;
+    border: none;
 
-    /* Make the masthead heading the same height as the navigation */
-    h3 {
-        margin-top: 0;
-        margin-bottom: 0;
-        line-height: 40px;
+    h3,
+    .login-btns{
+        display: inline-block;
     }
-}
 
-/* Custom page footer */
-.footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
-    display: none;
+    .login-btns button{
+        margin-top: 10px;
+        font-size: 22px;
+        width: 120px;
+    }
+
+    h3 {
+        line-height: 2.75em;
+        color: $red;
+    }
+
+    #logout-btn{
+        display: none;
+    }
 }
 
 .container{
@@ -55,53 +74,39 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
-        max-width: 730px;
-    }
-
-    /* Remove the padding we set earlier */
-    .header,
-    .marketing,
-    .footer {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    /* Space out the masthead */
-    .header {
-        padding-bottom: 20px;
-        margin-bottom: 30px;
-
-        h3,
-        .login-btns{
-            display: inline-block;
-        }
-
-        #logout-btn{
-            display: none;
-        }
+        max-width: 960px;
     }
 }
 
 .modal-content{
     width: 450px;
-    font-size: 14px;
-    border-radius: 6px;
     box-shadow: 1px 1px 1px whitesmoke;
-    color: rgb(68, 72, 119);
+    color: $blue;
+    @include border-radius(6px);
 
     .modal-header{
-        background: #A19EB5;
-        border-radius: 6px 6px 0 0;
-        border-bottom: 1px solid rgb(68, 72, 119);
+        background: $grey;
+        color: $red;
+        border-bottom: 1px solid #502B29;
+        @include border-radius(6px 6px 0 0);
+
+        h2{
+            text-align: center;
+        }
     }
 
     .modal-body{
         padding-left: 30px;
-        background: rgb(95, 124, 199);
-        border-radius: 0 0 6px 6px;
+        background: #DCDCDC;
+        @include border-radius(0 0 6px 6px);
+
+        .returning-users,
+        .new-users{
+            padding-bottom: 30px;
+        }
 
         h3{
-            margin-top: 0;
+            text-align: center;
             margin-bottom: 20px;
 
             &:nth-child(1){
@@ -115,69 +120,89 @@ body {
             label{
                 width: 80px;
             }
+
+            input{
+                margin-left: 15px;
+                padding-left: 5px;
+                @include border-radius(6px);
+
+                &[type=file]{
+                    width: 220px;
+                }
+            }
         }    
 
         button{
-            margin-left: 250px;
+            position: absolute;
+            right: 0;
+            margin-top: 5px;
+            margin-right: 15px;
+            width: 120px;
         }
     }
 }
     
 .left-side,
 .message-stream-plus-header{
+    margin-top: 60px;
     display: none;
-
 }
 
 .left-side{
-    margin: 10px 20px 0 20px;
-    background: rgb(93, 96, 109);
+    margin-left: 20px;
+    margin-right: 40px;
+    background: $blue;
     padding-bottom: 15px;
-    border-radius: 6px;
-    padding-bottom: 15px;
-    border-radius: 6px;
+    @include border-radius(6px);
     
-    .avatar{
-        width: 200px;
-        height: 200px;
-        margin-top: 15px;
-    }
-
-    h3{
-        margin: 20px 0;
+    .user-stuff{
         text-align: center;
+
+        .avatar{
+            width: 100%;
+            margin-top: 15px;
+            @include border-radius(50%);
+        }
+
+        h3{
+            color: $red;
+            padding: 10px 0;
+        }
     }
 
     #message-data{
-        width: 200px;
+        width: 100%;
         height: 115px;
+        padding: 5px;
     }
 
     #send-btn{
         float: right;
         margin-top: 10px;
+        width: 90px;
     }
 }
 
 .message-stream-plus-header{
-    border-radius: 6px;
-    background: rgb(95, 124, 199);
-    margin-top: 10px;
-    box-shadow: -1px -1px 1px rgb(148, 156, 218);
+    background: rgba(255,255,255,.8);
+    color: #3B3C4E;
+    margin-bottom: 60px;
     padding-bottom: 15px;
+    box-shadow: -1px -1px 1px rgb(148, 156, 218);
+    @include border-radius(6px);
 
     .message-stream-header{
         font-size: 24px;
-        border-bottom: 1px solid rgb(68, 72, 119);
+        color: $red;
+        border-bottom: 1px solid #502B29;
         padding: 10px 5px;
     }
 
     .message-stream{
-       
         .message-row{
-            border-bottom: 1px solid rgb(148, 156, 218);
+            border-bottom: 1px solid $blue;
             padding: 10px;
-            height: 83px;
+            height: 75px;
             overflow: hidden;
 
             .message-header{
@@ -188,38 +213,20 @@ body {
                     display: inline-block;
                 }
 
-                h4{
-                    margin: 0;
-                }
-
                 span{
                     float: right;
+                    font-style: italic;
                 }
             }
 
+            .message-body{
+                padding-left: 10px;
+            }
+
             &.expand{
+                overflow: auto;
                 height: auto;
             }
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -8,16 +8,16 @@ var ListView = Parse.View.extend({
 	template: _.template($('#list-template').text()),
 
 	initialize: function(){
-		//$('.message-stream').append().html('');
 		$('.message-stream').prepend(this.el);
 		this.render();
+
+		this.on('add', this.collection, this.render);
 	},
 
 	render: function(){
-		var renderedTemplate = this.template({model: this.model}); //pass in seperate models???
+		var renderedTemplate = this.template({model: this.model});
 
 		this.$el.html(renderedTemplate);
-
 	},
 
 	expand: function(){

@@ -1,12 +1,26 @@
-// var MainView = Parse.View.extend({
+var MainView = Parse.View.extend({
 	
-// 	events:{
-// 		'click #start': 'lauchApp',
-// 		//'click #logout': 'logOut'
-// 	},
+	events:{
+		'click #start-app': 'lauchApp',
+		'click #logout': 'logOut'
+	},
 
-// 	lauchApp: function(){
-// 		new LoginView();
-// 	}
+	initialize: function(){
+		this.messages = new MessagesCollection();
+	},
 
-// });
+	lauchApp: function(){
+		new LoginView();
+	},
+
+	logOut: function(){
+		Parse.User.logOut();
+		currentUser = Parse.User.current();
+
+		$('.left-side').hide();
+		$('.message-stream-plus-header').empty().hide();
+
+		$(this).hide();
+		$('#start-app').show();
+	}
+});
