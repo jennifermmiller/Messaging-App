@@ -9,8 +9,11 @@ var UserView = Parse.View.extend({
 
 	initialize: function(){
 		$('.user-info').html(this.el);
-
+		
 		this.render();
+
+		var profilePhoto = currentUser.get("avatar");
+		$("#profile-image")[0].src = profilePhoto.url();
 	},
 
 	render: function(){

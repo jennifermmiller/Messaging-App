@@ -39,7 +39,6 @@ var LoginView = Parse.View.extend({
 			var parseFile = new Parse.File(name, file);
 
 			parseFile.save().then(function(parseFile){
-				var url = parseFile.url()
 				user.set('avatar', parseFile);
 				user.save();
 			}); 
