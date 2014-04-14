@@ -38,7 +38,7 @@ var LoginView = Parse.View.extend({
 
 			var parseFile = new Parse.File(name, file);
 
-			parseFile.save().then(function(){
+			parseFile.save().then(function(parseFile){
 				user.set('avatar', parseFile);
 				user.save();
 			}); 
@@ -49,8 +49,10 @@ var LoginView = Parse.View.extend({
 		user.signUp(null, {
 			success: function(user){
 				currentUser = Parse.User.current();
+				console.log(user);
 			},
 			error: function(user, error){
+				alert("All fields must be filled out in order to continue.")
 				console.log('Oopz! We could not sign you up!' + error);
 			}
 		}).then(function(){

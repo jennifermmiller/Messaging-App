@@ -3,6 +3,7 @@
 	// have defualt image for users that don't choose avatar
 	// email verification?
 	// max char for username?
+	// Different error for usernames already in use 
 	// Put main.js anf helper function into backbone mainview?
 	// Add media queries to CSS
 	// Add list of currents users or friends?
@@ -42,12 +43,7 @@ function clearModal() {
 }
 
 function loadPage(){
-	$('.left-side').show();
 
-	$('.message-stream-plus-header').show();
-
-	new UserView();
-	
 	messages.fetch({
 		success: function(){
 			messages.sort();
@@ -56,7 +52,11 @@ function loadPage(){
 			});
 		},
 	});	
+	$('.message-stream-plus-header').show();
 
 	$('#start-app').hide();
 	$('#logout-btn').show();
+	
+	$('.left-side').show();
+	new UserView();
 }
