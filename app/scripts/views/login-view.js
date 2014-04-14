@@ -49,8 +49,10 @@ var LoginView = Parse.View.extend({
 		user.signUp(null, {
 			success: function(user){
 				currentUser = Parse.User.current();
+				console.log(user);
 			},
 			error: function(user, error){
+				alert("All fields must be filled out in order to continue.")
 				console.log('Oopz! We could not sign you up!' + error);
 			}
 		}).then(function(){
