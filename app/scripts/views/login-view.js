@@ -41,15 +41,20 @@ var LoginView = Parse.View.extend({
 			parseFile.save().then(function(parseFile){
 				user.set('avatar', parseFile);
 				user.save();
+				console.log('FYI, sometimes images from Parse take a little while to load.');
+			}).then(function(){
+				if (typeof(currentUser.get('avatar')) !== 'undefined') {
+					var profilePhoto = currentUser.get("avatar").url();
+					$("#profile-image").attr("src", profilePhoto);
+			  	}
 			}); 
 		} else {
-			console.log('An error saving avatar occured.');
+			console.log("No avatar.");
 		}
 
 		user.signUp(null, {
 			success: function(user){
 				currentUser = Parse.User.current();
-				console.log(user);
 			},
 			error: function(user, error){
 				alert("All fields must be filled out in order to continue.")
@@ -79,6 +84,14 @@ var LoginView = Parse.View.extend({
 			//Change login to logout
 			$(this).hide();
 			$('#logout-btn').show();
+
+			//Grab user's avatar
+			if (typeof(currentUser.get('avatar')) !== 'undefined') {
+				var profilePhoto = currentUser.get("avatar").url();
+				$("#profile-image").attr("src", profilePhoto);
+		  	} else {
+		        $('#profile-image').attr("src","images/default_person.jpg");
+		    }
 		});
 	}
 });

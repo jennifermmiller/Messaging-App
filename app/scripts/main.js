@@ -15,16 +15,19 @@ $(document).ready(function(){
 
 	window.messages = new MessagesCollection();
 
-	$('#start-app').click(function(){
+	$('#start-app').click(function(event){
+		event.preventDefault();
 		new LoginView();
 	});
 
-	$('#logout-btn').click(function(){
+	$('#logout-btn').click(function(event){
+		event.preventDefault();
 		Parse.User.logOut();
 		currentUser = Parse.User.current();
 
 		$('.left-side').hide();
 		$('.message-stream-plus-header').hide();
+		$('.message-stream').empty();
 
 		$(this).hide();
 		$('#start-app').show();
@@ -36,14 +39,14 @@ function clearModal() {
 	$('#user-name').val('');
 	$('#user-pswd').val('');
 	$('#user-email').val('');
-	$('#user-avatar').empty();
+	$('#user-avatar').val('');
 
 	$('#returning-user-name').val('');	
 	$('#returning-user-pswd').val('');	
 }
 
 function loadPage(){
-
+	//Load messages
 	messages.fetch({
 		success: function(){
 			messages.sort();
@@ -52,11 +55,12 @@ function loadPage(){
 			});
 		},
 	});	
+	
+	//Display page
 	$('.message-stream-plus-header').show();
-
 	$('#start-app').hide();
 	$('#logout-btn').show();
-	
 	$('.left-side').show();
+
 	new UserView();
 }

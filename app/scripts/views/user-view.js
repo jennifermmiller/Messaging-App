@@ -12,8 +12,7 @@ var UserView = Parse.View.extend({
 		
 		this.render();
 
-		var profilePhoto = currentUser.get("avatar");
-		$("#profile-image")[0].src = profilePhoto.url();
+		//currentUser.listenTo('change', this.getAvatar);
 	},
 
 	render: function(){
@@ -47,5 +46,11 @@ var UserView = Parse.View.extend({
 		});
 
 		$('#message-data').val('');
+	},
+
+	getAvatar: function(){
+			
 	}
 });
+
+
