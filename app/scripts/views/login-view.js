@@ -90,7 +90,7 @@ var LoginView = Parse.View.extend({
 				var profilePhoto = currentUser.get("avatar").url();
 				$("#profile-image").attr("src", profilePhoto);
 		  	} else {
-		        $('#profile-image').attr("src","images/default_person.jpg");
+		        $('#profile-image').attr("src","images/5b11e321.default_person.jpg");
 		    }
 		});
 	}
